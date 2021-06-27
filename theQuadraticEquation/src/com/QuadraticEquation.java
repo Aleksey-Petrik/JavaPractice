@@ -1,6 +1,8 @@
 package com;
 
 public class QuadraticEquation {
+    private static final int MAX_VALUE = 50;
+
     private static float calcD(float a, float b, float c){
         return (float) Math.pow(b, 2) - 4 * a * c;
     }
@@ -21,5 +23,10 @@ public class QuadraticEquation {
             return new float[]{x1, x2};
         }
         return null;
+    }
+
+    public static float random(){
+        float result = (float) (int) (Math.random() * MAX_VALUE);
+        return (int) (Math.random() * 2) == 0 ? -result : result;
     }
 }

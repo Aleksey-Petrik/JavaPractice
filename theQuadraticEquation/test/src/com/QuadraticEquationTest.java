@@ -16,10 +16,9 @@ public class QuadraticEquationTest {
     @Test
     public void randomNumbers() {
         for (int i = 0; i < 100; i++) {
-            float a = (float) (int) (Math.random() * 100);
-            float b = (float) (int) (Math.random() * 100);
-            float c = (float) (int) (Math.random() * 100);
-
+            float a = QuadraticEquation.random();
+            float b = QuadraticEquation.random();
+            float c = QuadraticEquation.random();
             System.out.println("a=" + a + " b=" + b + " c=" + c + " " + Arrays.toString(QuadraticEquation.calc(a, b, c)));
         }
     }

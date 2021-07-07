@@ -4,47 +4,47 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1">
-   <left>
-      <VBox prefHeight="200.0" prefWidth="110.0" BorderPane.alignment="CENTER">
-         <Label text="Ф.И.О.">
-            <VBox.margin>
-               <Insets left="10.0" top="17.0"/>
-            </VBox.margin>
-         </Label>
-         <Label text="Номер телефона">
-            <VBox.margin>
-               <Insets left="10.0" top="15.0"/>
-            </VBox.margin>
-         </Label>
-      </VBox>
-   </left>
-   <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <TextField maxWidth="400.0">
-            <VBox.margin>
-               <Insets top="10.0"/>
-            </VBox.margin>
-         </TextField>
-         <TextField maxWidth="400.0">
-            <VBox.margin>
-               <Insets top="10.0"/>
-            </VBox.margin>
-         </TextField>
-      </VBox>
-   </center>
-   <right>
-      <VBox maxWidth="80.0" prefHeight="150.0" prefWidth="80.0" BorderPane.alignment="CENTER">
-         <Button mnemonicParsing="false" prefWidth="60.0" text="ОК">
-            <VBox.margin>
-               <Insets left="10.0" top="10.0"/>
-            </VBox.margin>
-         </Button>
-         <Button mnemonicParsing="false" prefWidth="60.0" text="Отмена">
-            <VBox.margin>
-               <Insets left="10.0" top="10.0"/>
-            </VBox.margin>
-         </Button>
-      </VBox>
-   </right>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditDialogController">
+    <left>
+        <VBox prefHeight="200.0" prefWidth="110.0" BorderPane.alignment="CENTER">
+            <Label text="Ф.И.О.">
+                <VBox.margin>
+                    <Insets left="10.0" top="17.0" />
+                </VBox.margin>
+            </Label>
+            <Label text="Номер телефона">
+                <VBox.margin>
+                    <Insets left="10.0" top="15.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <TextField fx:id="nameText" maxWidth="400.0">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </TextField>
+            <TextField fx:id="telephoneText" maxWidth="400.0">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </TextField>
+        </VBox>
+    </center>
+    <right>
+        <VBox maxWidth="80.0" prefHeight="150.0" prefWidth="80.0" BorderPane.alignment="CENTER">
+            <Button fx:id="okButton" defaultButton="true" mnemonicParsing="false" onAction="#actionSave" prefWidth="60.0" text="ОК">
+                <VBox.margin>
+                    <Insets left="10.0" top="10.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" onAction="#actionClose" prefWidth="60.0" text="Отмена">
+                <VBox.margin>
+                    <Insets left="10.0" top="10.0" />
+                </VBox.margin>
+            </Button>
+        </VBox>
+    </right>
 </BorderPane>

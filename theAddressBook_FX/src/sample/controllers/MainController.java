@@ -1,14 +1,13 @@
 package sample.controllers;
 
 import javafx.collections.ListChangeListener;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.model.Person;
@@ -16,8 +15,11 @@ import sample.storage.CollectionAddressBook;
 
 //import java.awt.*; этого не должно быть
 import java.io.IOException;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
     private final CollectionAddressBook addressBook = new CollectionAddressBook();
 
     private Stage mainStage;
@@ -46,31 +48,41 @@ public class MainController {
     private EditDialogController editDialogController;
     private Stage editDialogStage;
 
+    private ResourceBundle resourceBundle;
+
     @FXML
-    private void initialize() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.resourceBundle = resourceBundle;
         //указываем поля класса Person для заполнения таблицы на форме
         columnFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         columnTelephone.setCellValueFactory(new PropertyValueFactory<>("telephoneNumber"));
+
+        initListener();
+        addressBook.testData();
+        dataTable.setItems(addressBook.getStorage());//заполняем элемент на форме, таблицу
+        initLoader();
+    }
+
+    private void initListener() {
         //слушатель, на изменения хранилища
         addressBook.getStorage().addListener((ListChangeListener<Person>) change -> {
             // if (change.wasAdded() || change.wasRemoved()) {
-            countLabel.setText("Количество записей: " + addressBook.getSize());
+            countLabel.setText(resourceBundle.getString("count") + ": " + addressBook.getSize());
             // }
         });
 
         dataTable.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getClickCount() == 2) {
                 editDialogController.setPerson((Person) dataTable.getSelectionModel().getSelectedItem());
+                showDialog();
             }
         });
+    }
 
-        addressBook.testData();
-
-        //заполняем таблицу
-        dataTable.setItems(addressBook.getStorage());
-
+    private void initLoader() {
         try {
             fxmlLoader.setLocation(getClass().getResource("../fxml/edit.fxml"));
+            fxmlLoader.setResources(ResourceBundle.getBundle("sample.bundles.Locale", new Locale("en")));
             fxmlEdit = fxmlLoader.load();
             editDialogController = fxmlLoader.getController();
         } catch (IOException e) {
@@ -101,7 +113,7 @@ public class MainController {
     private void showDialog() {
         if (editDialogStage == null) {
             editDialogStage = new Stage();
-            editDialogStage.setTitle("Редактирование записи");
+            editDialogStage.setTitle(fxmlLoader.getResources().getString("title.edit"));
             editDialogStage.setMinHeight(80);
             editDialogStage.setMinWidth(400);
             editDialogStage.setResizable(false);

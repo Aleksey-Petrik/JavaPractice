@@ -4,15 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditDialogController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EditDialogController">
     <left>
-        <VBox prefHeight="200.0" prefWidth="110.0" BorderPane.alignment="CENTER">
-            <Label text="Ф.И.О.">
+        <VBox prefHeight="80.0" prefWidth="125.0" BorderPane.alignment="CENTER">
+            <Label text="%fio">
                 <VBox.margin>
                     <Insets left="10.0" top="17.0" />
                 </VBox.margin>
             </Label>
-            <Label text="Номер телефона">
+            <Label text="%phone">
                 <VBox.margin>
                     <Insets left="10.0" top="15.0" />
                 </VBox.margin>
@@ -40,7 +40,7 @@
                     <Insets left="10.0" top="10.0" />
                 </VBox.margin>
             </Button>
-            <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" onAction="#actionClose" prefWidth="60.0" text="Отмена">
+            <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" onAction="#actionClose" prefWidth="60.0" text="%btn.cancel">
                 <VBox.margin>
                     <Insets left="10.0" top="10.0" />
                 </VBox.margin>

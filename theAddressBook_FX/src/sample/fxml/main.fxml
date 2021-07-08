@@ -7,17 +7,17 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
     <HBox maxHeight="50.0" prefHeight="50.0" prefWidth="150.0">
-        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#actionButtonPressed" prefWidth="70.0" text="Добавить">
+        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#actionButtonPressed" prefWidth="70.0" text="%btn.add">
             <HBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </HBox.margin>
         </Button>
-        <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefWidth="70.0" text="Изменить">
+        <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#actionButtonPressed" prefWidth="70.0" text="%btn.modify">
             <HBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </HBox.margin>
         </Button>
-        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#actionButtonPressed" prefWidth="70.0" text="Удалить">
+        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#actionButtonPressed" prefWidth="70.0" text="%btn.delete">
             <HBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </HBox.margin>
@@ -28,7 +28,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </VBox.margin>
         <TextField fx:id="searchText" layoutX="-12.0" prefHeight="25.0" prefWidth="294.0" AnchorPane.leftAnchor="-12.0" AnchorPane.rightAnchor="78.0" />
-        <Button fx:id="searchButton" layoutX="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Поиск" AnchorPane.rightAnchor="1.0" />
+        <Button fx:id="searchButton" layoutX="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="%btn.search" AnchorPane.rightAnchor="1.0" />
     </AnchorPane>
     <AnchorPane prefHeight="226.0" prefWidth="330.0" VBox.vgrow="ALWAYS">
         <VBox.margin>
@@ -36,8 +36,8 @@
         </VBox.margin>
         <TableView fx:id="dataTable" blendMode="DARKEN" layoutX="-14.0" prefHeight="211.0" prefWidth="380.0" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="0.0">
             <columns>
-                <TableColumn fx:id="columnFullName" prefWidth="176.0" text="ФИО" />
-                <TableColumn fx:id="columnTelephone" minWidth="6.0" prefWidth="194.0" text="ТЕЛЕФОН" />
+                <TableColumn fx:id="columnFullName" prefWidth="176.0" text="%fio" />
+                <TableColumn fx:id="columnTelephone" minWidth="6.0" prefWidth="194.0" text="%phone" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

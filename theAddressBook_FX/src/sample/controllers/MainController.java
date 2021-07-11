@@ -1,6 +1,10 @@
 package sample.controllers;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,11 +14,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.CustomTextField;
+import org.controlsfx.control.textfield.TextFields;
 import sample.model.Person;
 import sample.storage.CollectionAddressBook;
 
 //import java.awt.*; этого не должно быть
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -31,7 +38,7 @@ public class MainController implements Initializable {
     @FXML
     public Button btnDelete;
     @FXML
-    public TextField searchText;
+    public CustomTextField searchText;
     @FXML
     public Button searchButton;
     @FXML
@@ -44,11 +51,16 @@ public class MainController implements Initializable {
     public Label countLabel;
 
     private Parent fxmlEdit;
+
     private final FXMLLoader fxmlLoader = new FXMLLoader();
+
     private EditDialogController editDialogController;
+
     private Stage editDialogStage;
 
     private ResourceBundle resourceBundle;
+
+    private ObservableList<Person> backupList;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,20 +68,30 @@ public class MainController implements Initializable {
         //указываем поля класса Person для заполнения таблицы на форме
         columnFullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         columnTelephone.setCellValueFactory(new PropertyValueFactory<>("telephoneNumber"));
-
+        setupClearButtonField(searchText);
         initListener();
         addressBook.testData();
-        dataTable.setItems(addressBook.getStorage());//заполняем элемент на форме, таблицу
+        backupList = FXCollections.observableArrayList();
+        backupList.addAll(addressBook.getStorage());
+
+        dataTable.setItems(addressBook.getStorage());//заполняем элемент на форме, таблиц
         initLoader();
+    }
+
+    private void setupClearButtonField(CustomTextField customTextField) {
+        try {
+            Method m = TextFields.class.getDeclaredMethod("setupClearButtonField", TextField.class, ObjectProperty.class);
+            m.setAccessible(true);
+            m.invoke(null, customTextField, customTextField.rightProperty());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void initListener() {
         //слушатель, на изменения хранилища
-        addressBook.getStorage().addListener((ListChangeListener<Person>) change -> {
-            // if (change.wasAdded() || change.wasRemoved()) {
-            countLabel.setText(resourceBundle.getString("count") + ": " + addressBook.getSize());
-            // }
-        });
+        addressBook.getStorage().addListener((ListChangeListener<Person>) change ->
+                countLabel.setText(resourceBundle.getString("count") + ": " + addressBook.getSize()));
 
         dataTable.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getClickCount() == 2) {
@@ -90,7 +112,7 @@ public class MainController implements Initializable {
         }
     }
 
-    public void actionButtonPressed(javafx.event.ActionEvent actionEvent) {
+    public void actionButtonPressed(ActionEvent actionEvent) {
         Object source = actionEvent.getSource();
         if (!(source instanceof Button)) {
             return;
@@ -108,6 +130,20 @@ public class MainController implements Initializable {
             }
             case "btnDelete" -> addressBook.delete((Person) dataTable.getSelectionModel().getSelectedItem());
         }
+    }
+
+    public void actionSearch(ActionEvent actionEvent) {
+        ObservableList<Person> persons = addressBook.getStorage();
+        if (searchText.getText().isEmpty()) {
+            if (persons.size() != backupList.size()) {
+                persons.clear();
+                persons.addAll(backupList);
+            }
+        }
+        persons.removeIf(person ->
+                (!person.getFullName().toLowerCase().contains(searchText.getText().toLowerCase()) &&
+                        !person.getTelephoneNumber().contains(searchText.getText())));
+
     }
 
     private void showDialog() {

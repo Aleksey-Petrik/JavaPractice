@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Person {
     private final SimpleStringProperty fullName;
     private final SimpleStringProperty telephoneNumber;
-    private StringProperty address;
+    private final StringProperty address;
 
     public Person() {
         this("", "", "");

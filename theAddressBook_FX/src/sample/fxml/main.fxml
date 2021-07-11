@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import org.controlsfx.control.textfield.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
     <HBox maxHeight="50.0" prefHeight="50.0" prefWidth="150.0">
@@ -27,8 +28,8 @@
         <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </VBox.margin>
-        <TextField fx:id="searchText" layoutX="-12.0" prefHeight="25.0" prefWidth="294.0" AnchorPane.leftAnchor="-12.0" AnchorPane.rightAnchor="78.0" />
-        <Button fx:id="searchButton" layoutX="243.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="%btn.search" AnchorPane.rightAnchor="1.0" />
+        <Button fx:id="searchButton" layoutX="243.0" mnemonicParsing="false" onAction="#actionSearch" prefHeight="25.0" prefWidth="70.0" text="%btn.search" AnchorPane.rightAnchor="1.0" />
+      <CustomTextField fx:id="searchText" prefHeight="25.0" prefWidth="287.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="73.0" />
     </AnchorPane>
     <AnchorPane prefHeight="226.0" prefWidth="330.0" VBox.vgrow="ALWAYS">
         <VBox.margin>

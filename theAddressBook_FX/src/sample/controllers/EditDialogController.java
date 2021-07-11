@@ -22,14 +22,14 @@ public class EditDialogController {
 
     private Person person;
 
-    public void setPerson(Person person){
+    public void setPerson(Person person) {
         Objects.requireNonNull(person, "IT IS NULL!!!");
         this.person = person;
         nameText.setText(person.getFullName());
         telephoneText.setText(person.getTelephoneNumber());
     }
 
-    public Person getPerson(){
+    public Person getPerson() {
         return person;
     }
 
@@ -39,7 +39,7 @@ public class EditDialogController {
         stage.close();
     }
 
-    public void actionSave(ActionEvent actionEvent){
+    public void actionSave(ActionEvent actionEvent) {
         person.setFullName(nameText.getText());
         person.setTelephoneNumber(telephoneText.getText());
         actionClose(actionEvent);

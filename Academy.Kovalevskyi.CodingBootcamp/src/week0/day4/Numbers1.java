@@ -63,7 +63,7 @@ public class Numbers1 {
         return chars;
     }
 
-    private static int getLengthNumber(int number) {
+    protected static int getLengthNumber(int number) {
         int length = 0;
         do {
             number /= 10;

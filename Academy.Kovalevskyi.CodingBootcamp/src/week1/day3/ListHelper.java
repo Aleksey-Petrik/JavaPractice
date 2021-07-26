@@ -123,7 +123,7 @@ public class ListHelper {
         if (second != null) {
             second.setPrev(prior);
         }
-        current = second;
+
         return value;
     }
 

@@ -24,14 +24,11 @@ public class ListHelper {
         if (someNode == null) {
             return newNodes;
         }
-
         while (someNode.getNext() != null) {
             someNode = someNode.getNext();
         }
-
         someNode.setNext(newNodes);
         newNodes.setPrev(someNode);
-
         return newNodes;
     }
 
@@ -40,14 +37,11 @@ public class ListHelper {
         if (someNode == null) {
             return newNodes;
         }
-
         while (someNode.getPrev() != null) {
             someNode = someNode.getPrev();
         }
-
         someNode.setPrev(newNodes);
         newNodes.setNext(someNode);
-
         return newNodes;
     }
 
@@ -71,13 +65,11 @@ public class ListHelper {
 
     public static <T, R> ListNode<R> map(ListNode<T> someNode, Function<T, R> mapFunction) {
         ListNode<R> newNodes = null;
-
         ListNode<T> node = someNode;
         while (node != null) {
             newNodes = addToStart(newNodes, mapFunction.apply(node.getValue()));
             node = node.getPrev();
         }
-
         node = someNode.getNext();
         while (node != null) {
             newNodes = addToEnd(newNodes, mapFunction.apply(node.getValue()));
@@ -87,7 +79,6 @@ public class ListHelper {
     }
 
     public static <T> ListNode<T> insertAfter(ListNode<T> prev, T newValue) {
-
         ListNode<T> prior = prev;
         ListNode<T> second = prev.getNext();
 
@@ -99,7 +90,6 @@ public class ListHelper {
         if (second != null) {
             second.setPrev(newNodes);
         }
-
         return newNodes;
     }
 
@@ -123,7 +113,6 @@ public class ListHelper {
         if (second != null) {
             second.setPrev(prior);
         }
-
         return value;
     }
 

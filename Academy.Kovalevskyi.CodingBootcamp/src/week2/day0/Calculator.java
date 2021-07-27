@@ -11,7 +11,7 @@ public class Calculator {
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException();
             }
-            if (b == 0) {
+            if (b == 0 && ("/".equals(args[1]) || "%".equals(args[1]))) {
                 System.out.println("Division by zero is impossible!");
                 return;
             }

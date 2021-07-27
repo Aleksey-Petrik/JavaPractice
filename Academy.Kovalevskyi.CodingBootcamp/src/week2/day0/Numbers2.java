@@ -8,12 +8,11 @@ import java.util.Arrays;
 public class Numbers2 extends Numbers1 {
 
     public static void main(String[] args) {
-        char[][]arr = generateTuples(5);
+        char[][] arr = generateTuples(5);
 
         for (char[] chars : arr) {
             System.out.println(Arrays.toString(chars));
         }
-
     }
 
     public static char[][] generateTriplets() {
@@ -38,36 +37,36 @@ public class Numbers2 extends Numbers1 {
         return numbers;
     }
 
-public static char[][] generateTuples() {
-    char[][] numbers = new char[10_000][5];
-    for(int i = 0; i < numbers.length; i++){
-        numbers[i][2] = ' ';
-    }
-    return getGenerateTuples(numbers);
-}
-
-public static char[][] generateTuples(int amount) {
-    if (isNegative(amount)) {
-        throw new IllegalArgumentException();
-    }
-    if (amount == 0) {
-        return new char[0][0];
-    }
-    char[][] numbers = new char[NumberUtils.powerRecursive(10, amount)][amount];
-    return getGenerateTuples(numbers);
-}
-
-private static char[][] getGenerateTuples(char[][] array) {
-    for (int i = 0; i < array.length; i++) {
-        char[] arr = convertToCharArray(i);
-        int counter = arr.length;
-        for (int j = array[i].length - 1; j >= 0; j--) {
-            if (array[i][j] == ' ') {
-                continue;
-            }
-            array[i][j] = counter > 0 ? arr[--counter] : '0';
+    public static char[][] generateTuples() {
+        char[][] numbers = new char[10_000][5];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i][2] = ' ';
         }
+        return getGenerateTuples(numbers);
     }
-    return array;
-}
+
+    public static char[][] generateTuples(int amount) {
+        if (isNegative(amount)) {
+            throw new IllegalArgumentException();
+        }
+        if (amount == 0) {
+            return new char[0][0];
+        }
+        char[][] numbers = new char[NumberUtils.powerRecursive(10, amount)][amount];
+        return getGenerateTuples(numbers);
+    }
+
+    private static char[][] getGenerateTuples(char[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            char[] arr = convertToCharArray(i);
+            int counter = arr.length;
+            for (int j = array[i].length - 1; j >= 0; j--) {
+                if (array[i][j] == ' ') {
+                    continue;
+                }
+                array[i][j] = counter > 0 ? arr[--counter] : '0';
+            }
+        }
+        return array;
+    }
 }

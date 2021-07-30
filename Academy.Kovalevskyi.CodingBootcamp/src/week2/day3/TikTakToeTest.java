@@ -22,13 +22,4 @@ public class TikTakToeTest {
             System.out.print("\n\nХотите начать игру заново? [yes/no]:");
         } while (!"no".equals(yesOrNo = scanner.next()));
     }
-
-
-
-
-
-
-
-
-
 }

@@ -51,4 +51,5 @@ public class BoxGenerator {
         System.out.println();
         return --weight;
     }
+
 }

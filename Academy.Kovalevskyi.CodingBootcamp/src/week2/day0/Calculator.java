@@ -22,7 +22,7 @@ public class Calculator {
                 case "/" -> result = a / b;
                 case "*" -> result = a * b;
                 case "%" -> result = a % b;
-                default -> throw new IllegalArgumentException();
+                default -> throw new IllegalArgumentException("Only symbols +,-,/,*,%.");
             }
             System.out.println("result: " + result);
         } else {

@@ -28,18 +28,22 @@ public interface Sort {
     return targetClone;
   }
 
+  //сложность алгоритма в самом лучшем случае
   default String complexityBest() {
     return "N";
   }
 
+  // сложность алгоритма в среднем
   default String complexityAverage() {
     return "N^2";
   }
 
+  //сложность алгоритма в худшем случае
   default String complexityWorst() {
     return "N^2";
   }
 
+  //сложность алгоритма с точки зрения занимаемого места в памяти
   default String spaceComplexityWorst() {
     return "N";
   }

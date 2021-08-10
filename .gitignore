@@ -1,5 +1,10 @@
 .idea
 out
 *.iml
+*.class
 log
-theQuadraticEquation/lib/
+*/target
+*/lib
+*/.DS_Store
+*/*.jar
+*/pom.xml

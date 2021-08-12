@@ -25,8 +25,7 @@ public class Tasks {
     if (left.length() != right.length()) {
       return false;
     }
-
-    int[] mass = new int[255];
+    int[] mass = new int[256];
     char[] leftArray = left.toCharArray();
     char[] rightArray = right.toCharArray();
 

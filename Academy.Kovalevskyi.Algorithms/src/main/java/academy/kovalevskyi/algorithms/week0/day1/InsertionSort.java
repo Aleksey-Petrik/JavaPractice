@@ -1,16 +1,9 @@
 package academy.kovalevskyi.algorithms.week0.day1;
 
 import academy.kovalevskyi.algorithms.week0.day0.Sort;
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class InsertionSort implements Sort {
-  public static void main(String[] args) {
-    InsertionSort is = new InsertionSort();
-    Integer[] array = new Integer[]{5, 4, 3, 2, 1};
-    is.sort(array, Integer::compare);
-    System.out.println(Arrays.toString(array));
-  }
 
   @Override
   public <T> void sort(T[] target, Comparator<T> comparator) {

@@ -6,12 +6,6 @@ import java.util.Comparator;
 
 public class MergeSort implements Sort {
 
-  public static void main(String[] args) {
-    Integer[] array = {3, 6, 1, 7, 5, 4};
-    MergeSort mergeSort = new MergeSort();
-    System.out.println(Arrays.toString(mergeSort.createSortedArray(array, Integer::compareTo)));
-  }
-
   @Override
   public <T> T[] createSortedArray(T[] target, Comparator<T> comparator) {
     T[] targetClone = target.clone();
@@ -58,7 +52,7 @@ public class MergeSort implements Sort {
   //сложность алгоритма в самом лучшем случае
   @Override
   public String complexityBest() {
-    return "N*log(N)";
+    return "";
   }
 
   // сложность алгоритма в среднем
@@ -70,7 +64,7 @@ public class MergeSort implements Sort {
   //сложность алгоритма в худшем случае
   @Override
   public String complexityWorst() {
-    return "N";
+    return "N*log(N)";
   }
 
   //сложность алгоритма с точки зрения занимаемого места в памяти

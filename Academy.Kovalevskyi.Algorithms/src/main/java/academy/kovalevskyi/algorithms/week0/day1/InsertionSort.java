@@ -14,12 +14,6 @@ public class InsertionSort implements Sort {
     }
   }
 
-  private <T> void swap(T[] array, int currentIndex, int swapIndex) {
-    T buf = array[currentIndex];
-    array[currentIndex] = array[swapIndex];
-    array[swapIndex] = buf;
-  }
-
   //сложность алгоритма в самом лучшем случае
   @Override
   public String complexityBest() {

@@ -28,6 +28,20 @@ public interface Sort {
     return targetClone;
   }
 
+  default <T> void swap(T[] target, int currentIndex, int swapIndex) {
+    T buf = target[currentIndex];
+    target[currentIndex] = target[swapIndex];
+    target[swapIndex] = buf;
+  }
+
+  default Integer[] generateIntegerArray(int size) {
+    Integer[] array = new Integer[size];
+    for (int i = 0; i < size; i++) {
+      array[i] = (int) (Math.random() * 20);
+    }
+    return array;
+  }
+
   //сложность алгоритма в самом лучшем случае
   default String complexityBest() {
     return "N";

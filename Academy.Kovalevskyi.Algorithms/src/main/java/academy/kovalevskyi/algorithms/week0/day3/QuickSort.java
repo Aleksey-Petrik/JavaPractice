@@ -40,7 +40,7 @@ public class QuickSort implements Sort {
   //сложность алгоритма в самом лучшем случае
   @Override
   public String complexityBest() {
-    return "N";
+    return "N*log(N)";
   }
 
   // сложность алгоритма в среднем

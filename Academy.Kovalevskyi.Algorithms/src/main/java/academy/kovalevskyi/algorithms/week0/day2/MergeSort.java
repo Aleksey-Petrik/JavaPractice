@@ -26,7 +26,7 @@ public class MergeSort implements Sort {
   }
 
   private static <T> void merge(T[] array, T[] support, Comparator<T> comp,
-                               int ls, int le, int rs, int re) {
+                                int ls, int le, int rs, int re) {
     for (int i = ls; i <= re; i++) {
       support[i] = array[i];
     }

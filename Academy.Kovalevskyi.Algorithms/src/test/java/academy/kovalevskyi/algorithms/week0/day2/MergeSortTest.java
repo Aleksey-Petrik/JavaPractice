@@ -1,13 +1,9 @@
 package academy.kovalevskyi.algorithms.week0.day2;
 
 import academy.kovalevskyi.algorithms.week0.day0.Sort;
-import academy.kovalevskyi.algorithms.week0.day3.HeapSort;
+import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MergeSortTest {
   Sort sort = new Sort() {

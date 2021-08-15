@@ -38,7 +38,6 @@ public class Numbers1 {
         return number < 0;
     }
 
-
     public static char[] convertToCharArray(int number) {
         boolean isNegativeNumber = isNegative(number);
         int length = getLengthNumber(number);

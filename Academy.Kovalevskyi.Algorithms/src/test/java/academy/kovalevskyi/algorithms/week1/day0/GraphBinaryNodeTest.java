@@ -18,17 +18,20 @@ class GraphBinaryNodeTest {
     Assertions.assertFalse(GraphHelper.equals(node1, node3));
     //contains
     var node = new GraphBinaryNode<>(new GraphBinaryNode<>(null, IntGraphHelper.createNode(9), 2),
-            new GraphBinaryNode<>(IntGraphHelper.createNode(4), IntGraphHelper.createNode(7), 6), 5);
+            new GraphBinaryNode<>(IntGraphHelper.createNode(4),
+                    IntGraphHelper.createNode(7), 6), 5);
     //true find elem 6
-    Assertions.assertTrue(IntGraphHelper.contains(node,6));
+    Assertions.assertTrue(IntGraphHelper.contains(node, 6));
     //false not find 8
-    Assertions.assertFalse(IntGraphHelper.contains(node,8));
+    Assertions.assertFalse(IntGraphHelper.contains(node, 8));
   }
 
   @Test
   public void invertGraphBinary() {
-    var node = new GraphBinaryNode<>(new GraphBinaryNode<>(null, IntGraphHelper.createNode(9), 2),
-            new GraphBinaryNode<>(IntGraphHelper.createNode(4), IntGraphHelper.createNode(7), 6), 5);
+    var node = new GraphBinaryNode<>(new GraphBinaryNode<>(null,
+            IntGraphHelper.createNode(9), 2),
+            new GraphBinaryNode<>(IntGraphHelper.createNode(4),
+                    IntGraphHelper.createNode(7), 6), 5);
     /* Binary tree
           5
        2     6
@@ -40,7 +43,8 @@ class GraphBinaryNodeTest {
        6     2
      7   4 9
     */
-    var expectedNode = new GraphBinaryNode<>(new GraphBinaryNode<>(IntGraphHelper.createNode(7), IntGraphHelper.createNode(4), 6),
+    var expectedNode = new GraphBinaryNode<>(new GraphBinaryNode<>(IntGraphHelper.createNode(7),
+            IntGraphHelper.createNode(4), 6),
             new GraphBinaryNode<>(IntGraphHelper.createNode(9), null, 2), 9);
     //true = actualNode == expectedNode
     Assertions.assertTrue(GraphHelper.equals(actualNode, expectedNode));

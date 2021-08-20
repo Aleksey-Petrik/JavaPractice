@@ -1,7 +1,6 @@
 package academy.kovalevskyi.algorithms.week1.day1;
 
 import academy.kovalevskyi.algorithms.week1.day0.GraphBinaryNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 

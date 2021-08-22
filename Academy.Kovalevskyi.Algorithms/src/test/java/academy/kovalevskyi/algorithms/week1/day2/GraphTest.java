@@ -47,13 +47,14 @@ class GraphTest {
     nodes.add(node7);
 
     Graph graph2 = Graph.generateGraph(nodes);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.countComponents()).isAtLeast(2);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node1)).isAtLeast(1);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node2)).isAtLeast(1);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node3)).isAtLeast(1);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node6)).isAtLeast(1);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node4)).isAtLeast(2);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node5)).isAtLeast(2);
-    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node7)).isAtLeast(2);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.countComponents()).isEqualTo(2);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node1)).isEqualTo(1);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node2)).isEqualTo(1);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node3)).isEqualTo(1);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node6)).isEqualTo(1);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node4)).isEqualTo(2);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node5)).isEqualTo(2);
+    Truth.assertWithMessage("Не прошел тест").that(graph2.getComponentId(node7)).isEqualTo(2);
   }
+
 }

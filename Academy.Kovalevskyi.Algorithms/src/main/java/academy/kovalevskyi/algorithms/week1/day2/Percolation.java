@@ -7,52 +7,15 @@ import java.util.Set;
 
 public class Percolation {
 
-  private Graph graph;
+  public Graph graph;
   private final List<Node> lastNode = new ArrayList<>();
   private final List<Node> firstNode = new ArrayList<>();
 
   public Percolation(boolean[][] field) {
-    this.graph = generateGraph(field);
-  }
-
-  public Graph generateGraph(boolean[][] field) {
-    Set<Node> set = new HashSet<>();
-    Node[][] nodeTemp = new Node[field.length][field[0].length];
-    for (int i = 0; i < field.length; i++) {
-      for (int j = 0; j < field[i].length; j++) {
-        if (field[i][j]) {
-          nodeTemp[i][j] = new Node();
-        }
-      }
-    }
-    for (int y = 0; y < field.length; y++) {
-      for (int x = 0; x < field[y].length; x++) {
-        if (nodeTemp[y][x] != null) {
-          if (x + 1 < field[y].length && nodeTemp[y][x + 1] != null) {
-            nodeTemp[y][x].neighbours.add(nodeTemp[y][x + 1]);
-          }
-          if (y != 0 && nodeTemp[y - 1][x] != null) {
-            nodeTemp[y][x].neighbours.add(nodeTemp[y - 1][x]);
-          }
-          if (y + 1 < field.length && nodeTemp[y + 1][x] != null) {
-            nodeTemp[y][x].neighbours.add(nodeTemp[y + 1][x]);
-          }
-          if (x != 0 && nodeTemp[y][x - 1] != null) {
-            nodeTemp[y][x].neighbours.add(nodeTemp[y][x - 1]);
-          }
-          set.add(nodeTemp[y][x]);
-        }
-      }
-    }
-    for (Node[] nodes : nodeTemp) {
-      if (nodes[nodeTemp[0].length - 1] != null) {
-        lastNode.add(nodes[nodeTemp[0].length - 1]);
-      }
-      if (nodes[0] != null) {
-        firstNode.add(nodes[0]);
-      }
-    }
-    return Graph.generateGraph(set);
+    Node[][] nodes = getNodesArray(field);
+    Set<Node> set = getSetOfNodesWithEdges(nodes);
+    setFirstsAndLastsNode(nodes);
+    this.graph = Graph.generateGraph(set);
   }
 
   public boolean percolate() {
@@ -67,5 +30,52 @@ public class Percolation {
       }
     }
     return false;
+  }
+
+  private void setFirstsAndLastsNode(Node[][] nodes) {
+    for (Node[] nodeArr : nodes) {
+      if (nodeArr[nodes[0].length - 1] != null) {
+        lastNode.add(nodeArr[nodes[0].length - 1]);
+      }
+      if (nodeArr[0] != null) {
+        firstNode.add(nodeArr[0]);
+      }
+    }
+  }
+
+  private Set<Node> getSetOfNodesWithEdges(Node[][] nodes) {
+    Set<Node> resultSet = new HashSet<>();
+    for (int y = 0; y < nodes.length; y++) {
+      for (int x = 0; x < nodes[y].length; x++) {
+        if (nodes[y][x] != null) {
+          if (x + 1 < nodes[y].length && nodes[y][x + 1] != null) {
+            nodes[y][x].getNeighbours().add(nodes[y][x + 1]);
+          }
+          if (y != 0 && nodes[y - 1][x] != null) {
+            nodes[y][x].getNeighbours().add(nodes[y - 1][x]);
+          }
+          if (y + 1 < nodes.length && nodes[y + 1][x] != null) {
+            nodes[y][x].getNeighbours().add(nodes[y + 1][x]);
+          }
+          if (x != 0 && nodes[y][x - 1] != null) {
+            nodes[y][x].getNeighbours().add(nodes[y][x - 1]);
+          }
+          resultSet.add(nodes[y][x]);
+        }
+      }
+    }
+    return resultSet;
+  }
+
+  private Node[][] getNodesArray(boolean[][] field) {
+    Node[][] nodeTemp = new Node[field.length][field[0].length];
+    for (int i = 0; i < field.length; i++) {
+      for (int j = 0; j < field[i].length; j++) {
+        if (field[i][j]) {
+          nodeTemp[i][j] = new Node();
+        }
+      }
+    }
+    return nodeTemp;
   }
 }

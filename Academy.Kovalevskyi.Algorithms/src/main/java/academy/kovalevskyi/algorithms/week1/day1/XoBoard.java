@@ -1,4 +1,3 @@
-
 package academy.kovalevskyi.algorithms.week1.day1;
 
 import java.util.Arrays;

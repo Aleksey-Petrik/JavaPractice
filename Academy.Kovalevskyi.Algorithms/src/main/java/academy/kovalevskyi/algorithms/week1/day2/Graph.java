@@ -26,7 +26,7 @@ public class Graph {
   }
 
   private void depthFirstSearch(Node node, int id) {
-    for (Node neighbour : node.neighbours) {
+    for (Node neighbour : node.getNeighbours()) {
       if (map.put(neighbour, id) == null) {
         depthFirstSearch(neighbour, id);
       }

@@ -18,14 +18,14 @@ public class Trie {
   public void add(String word) {
     var tmpRoot = root;
     for (int i = 0; i < word.length(); i++) {
+      final int j = i;
       tmpRoot = tmpRoot.children.computeIfAbsent(word.charAt(i),
               character -> {
                 var node = new TrieNode();
-                node.value = String.valueOf(character);
+                node.value = word.substring(0, j + 1);
                 return node;
               });
     }
-    tmpRoot.value = word;
     tmpRoot.finalCharacter = true;
   }
 

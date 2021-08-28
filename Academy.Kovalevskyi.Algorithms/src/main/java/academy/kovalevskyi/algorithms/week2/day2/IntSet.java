@@ -44,5 +44,21 @@ public class IntSet {
   public int sum() {
     return sum;
   }
+
+  public int countNodes() {
+    int count = 0;
+    for (IntTreeNode node : buckets) {
+      count += node.count();
+    }
+    return count;
+  }
+
+  public int sumNodes() {
+    int sum = 0;
+    for (IntTreeNode node : buckets) {
+      sum += node.sum();
+    }
+    return sum;
+  }
 }
 

@@ -79,7 +79,6 @@ public class StdBufferedReader implements Closeable {
       return;
     }
     reader.close();
-    buffer = null;
   }
 
   private char[] swapArrays(char[] buffer, char[] chars2, int lengthInsert, int positionInsert) {

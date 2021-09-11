@@ -91,12 +91,5 @@ public class StdBufferedReader implements Closeable {
   private void fill() throws IOException {
     charCount = reader.read(buffer, 0, bufferSize);
     bufferCursor = 0;
-
-    if (!reader.ready() && buffer[charCount - 1] == '\n') {
-      if (buffer.length > charCount) {
-        buffer[charCount] = '\n';
-        charCount++;
-      }
-    }
   }
 }

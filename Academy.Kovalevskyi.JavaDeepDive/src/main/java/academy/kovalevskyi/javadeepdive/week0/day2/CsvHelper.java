@@ -58,6 +58,7 @@ public class CsvHelper {
         chars[i] = '\n';
       }
     }
-    return new String(chars).split("\n");
+
+    return ((new String(chars)).replace("\"", "")).split("\n");
   }
 }

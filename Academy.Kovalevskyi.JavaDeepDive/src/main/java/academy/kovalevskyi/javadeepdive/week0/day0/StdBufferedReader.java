@@ -25,7 +25,7 @@ public class StdBufferedReader implements Closeable {
   }
 
   public StdBufferedReader(Reader reader) {
-    this(reader, MIN_BUFFER_SIZE);
+    this(reader, 1024);
   }
 
   public boolean hasNext() throws IOException {
@@ -33,6 +33,10 @@ public class StdBufferedReader implements Closeable {
   }
 
   public char[] readLine() throws IOException {
+    if (!hasNext()) {
+      return null;
+    }
+
     char[] bufChars = new char[]{};
     char[] bufChars2 = new char[]{};
 

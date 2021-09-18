@@ -78,11 +78,7 @@ public class JsonHelper {
   private static <T> T jsonToArray(String[] jsonElements, Class<T> clazz) {
     T resultArray = (T) Array.newInstance(clazz.getComponentType(), jsonElements.length);
     for (int i = 0; i < jsonElements.length; i++) {
-      if (clazz.getComponentType().equals(int.class)) {
-        Array.set(resultArray, i, Integer.parseInt(jsonElements[i]));
-      } else {
-        Array.set(resultArray, i, jsonElements[i]);
-      }
+      Array.set(resultArray, i, clazz.getComponentType().equals(int.class) ? Integer.parseInt(jsonElements[i]) : jsonElements[i]);
     }
     return resultArray;
   }
@@ -93,11 +89,7 @@ public class JsonHelper {
       String[] nameAndValue = element.split(":");
       Field field = object.getClass().getDeclaredField(nameAndValue[0]);
       field.setAccessible(true);
-      if (field.getType().equals(String.class)) {
-        field.set(object, nameAndValue[1]);
-      } else {
-        field.set(object, Integer.parseInt(nameAndValue[1]));
-      }
+      field.set(object, field.getType().equals(String.class) ? nameAndValue[1] : Integer.parseInt(nameAndValue[1]));
     }
     return object;
   }

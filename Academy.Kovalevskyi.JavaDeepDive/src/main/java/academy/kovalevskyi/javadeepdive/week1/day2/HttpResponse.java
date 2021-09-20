@@ -45,8 +45,8 @@ public record HttpResponse(ResponseStatus status, ContentType contentType, Strin
     ERROR_404(404, "not found"),
     ERROR_500(500, "server error");
 
-    public final int code;
-    public final String status;
+    private final int code;
+    private final String status;
 
     ResponseStatus(int code, String note) {
       this.code = code;
@@ -57,7 +57,7 @@ public record HttpResponse(ResponseStatus status, ContentType contentType, Strin
       return code;
     }
 
-    public String getNote() {
+    public String getStatus() {
       return status;
     }
   }

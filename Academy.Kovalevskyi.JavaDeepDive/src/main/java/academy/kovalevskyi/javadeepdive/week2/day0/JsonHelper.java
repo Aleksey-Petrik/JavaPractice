@@ -34,7 +34,7 @@ public class JsonHelper {
           throws IllegalAccessException, InvocationTargetException, InstantiationException,
           NoSuchFieldException, NoSuchMethodException {
 
-    if (json == null || json.matches("^\\s*((\\{\\s*})|(null))*\\s*$")) {
+    if (json == null || json.matches("^\\s*((\\{\\s*})|(null|NULL))*\\s*$")) {
       return null;
     }
 

@@ -27,9 +27,9 @@ public class HttpRequestsHandler {
     var bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
     var sb = new StringBuilder();
 
-    String line;
-    while (!(line = (bufferedReader.readLine())).isBlank()) {
-      sb.append(line).append("\r\n");
+    String strLine;
+    while (!(strLine = (bufferedReader.readLine())).isEmpty()) {
+      sb.append(strLine).append("\r\n");
     }
     /*
     while (bufferedReader.ready()) {

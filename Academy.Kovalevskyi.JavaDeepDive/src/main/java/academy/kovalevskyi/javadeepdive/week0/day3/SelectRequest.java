@@ -16,7 +16,7 @@ public class SelectRequest extends AbstractRequest<String[][]> {
   }
 
   @Override
-  protected String[][] execute() throws RequestException {
+  public String[][] execute() throws RequestException {
     checkHeader();
 
     var valuesList = new ArrayList<String[]>();

@@ -81,6 +81,14 @@ public class ConcurrentHttpServerWithPath extends Thread {
 
   public void stopServer() {
     live = false;
+    try {
+      executorService.shutdown();
+      if (serverSocket != null) {
+        serverSocket.close();
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public boolean isLive() {

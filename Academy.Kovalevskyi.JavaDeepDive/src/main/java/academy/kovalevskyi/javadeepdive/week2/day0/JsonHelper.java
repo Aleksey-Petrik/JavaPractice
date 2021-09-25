@@ -86,10 +86,11 @@ public class JsonHelper {
   private static <T> T jsonToObject(String[] jsonElements, Class<T> clazz) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
     T object = clazz.getConstructor().newInstance();
     for (String element : jsonElements) {
-      String[] nameAndValue = element.split(":");
-      Field field = object.getClass().getDeclaredField(nameAndValue[0]);
+      String[] nameAndValue = element.replace("'", "").split(":");
+      Field field = object.getClass().getDeclaredField(nameAndValue[0].trim());
       field.setAccessible(true);
-      field.set(object, field.getType().equals(String.class) ? nameAndValue[1] : Integer.parseInt(nameAndValue[1]));
+      field.set(object, field.getType().equals(String.class) ? nameAndValue[1].trim()
+              : Integer.parseInt(nameAndValue[1].trim()));
     }
     return object;
   }
